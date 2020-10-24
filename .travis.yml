@@ -7,7 +7,6 @@ global:
 android:
 licenses:
   - &#39;android-sdk-preview-license-.+&#39;
-
   - &#39;android-sdk-license-.+&#39;
   - &#39;google-gdk-license-.+&#39;
 components:
