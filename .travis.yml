@@ -27,19 +27,20 @@ before_script:
   - yes | sdkmanager &quot;platforms;android-29&quot;
 script:
   - ./gradlew assemblerelease
+
 deploy:
-provider: releases
-api-key: $GITHUB_API_KEY
-file: $TRAVIS_BUILD_DIR/app/build/outputs/apk/release/app-
-  release.apk
-skip_cleanup: true
-name: dev-build-$TRAVIS_TAG
-body: Automatic build of $TRAVIS_BRANCH ($TRAVIS_COMMIT) built by
-  Travis CI on $(date +&#39;%F %T %Z&#39;).
-prerelease: true
-overwrite: true
-target_commitish: $TRAVIS_COMMIT
-on:
-tags: true
+  provider: releases
+  api-key: $GITHUB_API_KEY
+  file: $TRAVIS_BUILD_DIR/app/build/outputs/apk/release/app-
+    release.apk
+  skip_cleanup: true
+  name: dev-build-$TRAVIS_TAG
+  body: Automatic build of $TRAVIS_BRANCH ($TRAVIS_COMMIT) built by
+    Travis CI on $(date +&#39;%F %T %Z&#39;).
+  prerelease: true
+  overwrite: true
+  target_commitish: $TRAVIS_COMMIT
+  on:
+    tags: true
 after_deploy:
   - rm -rf $TRAVIS_BUILD_DIR/app/build/outputs
